@@ -13,18 +13,18 @@ export default function StudentDashboard() {
   const enrolledCourses = [
     {
       id: 1,
-      title: "Microeconomía Intermedia",
-      instructor: "Dr. Alejandro Vargas",
+      title: "Microeconomía I",
+      instructor: "Dra. Ana Morales",
       image: "/placeholder.svg?height=200&width=300",
       progress: 75,
       lastAccessed: "Hace 2 días",
-      totalLessons: 24,
-      completedLessons: 18,
+      totalLessons: 32,
+      completedLessons: 24,
     },
     {
       id: 2,
-      title: "Econometría Aplicada con Stata",
-      instructor: "Msc. Lucía Mendoza",
+      title: "Econometría I",
+      instructor: "Dr. Alejandro Vargas",
       image: "/placeholder.svg?height=200&width=300",
       progress: 45,
       lastAccessed: "Hace 1 semana",
@@ -33,25 +33,25 @@ export default function StudentDashboard() {
     },
     {
       id: 3,
-      title: "Teoría de Juegos y Estrategia",
-      instructor: "Dra. Elena Ríos",
+      title: "Matemática para Economistas I",
+      instructor: "Msc. Javier Torres",
       image: "/placeholder.svg?height=200&width=300",
       progress: 90,
       lastAccessed: "Ayer",
-      totalLessons: 20,
-      completedLessons: 18,
+      totalLessons: 32,
+      completedLessons: 29,
     },
     {
       id: 4,
-      title: "Macroeconomía Dinámica",
-      instructor: "Dr. Roberto Silva",
+      title: "Macroeconomía I",
+      instructor: "Dr. Carlos Herrera",
       image: "/placeholder.svg?height=200&width=300",
       progress: 30,
       lastAccessed: "Hace 3 días",
-      totalLessons: 28,
-      completedLessons: 8,
+      totalLessons: 32,
+      completedLessons: 10,
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-gray-900">
@@ -70,11 +70,10 @@ export default function StudentDashboard() {
             <div className="flex space-x-8">
               <button
                 onClick={() => setActiveTab("mis-cursos")}
-                className={`px-4 py-2 text-sm font-medium transition-colors ${
-                  activeTab === "mis-cursos"
-                    ? "text-orange-500 border-b-2 border-orange-500"
-                    : "text-gray-400 hover:text-gray-100"
-                }`}
+                className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === "mis-cursos"
+                  ? "text-orange-500 border-b-2 border-orange-500"
+                  : "text-gray-400 hover:text-gray-100"
+                  }`}
               >
                 Mis Cursos
               </button>

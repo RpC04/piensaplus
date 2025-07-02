@@ -7,12 +7,21 @@ import { Badge } from "@/components/ui/badge"
 import { ChevronRight, Play, Users, BookOpen, MessageCircle, Star, Check, Rocket, Brain, Zap } from "lucide-react"
 import Link from "next/link"
 
+type ConstellationPoint = {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  speed: number;
+};
+
 export default function LandingPage() {
   const [hoveredCourse, setHoveredCourse] = useState<number | null>(null)
   const [isVisible, setIsVisible] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [animatedStats, setAnimatedStats] = useState({ professionals: 0, students: 0, courses: 0 })
   const [hasAnimated, setHasAnimated] = useState(false)
+  const [constellationPoints, setConstellationPoints] = useState<ConstellationPoint[]>([]);
   const statsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -23,6 +32,16 @@ export default function LandingPage() {
     }
 
     window.addEventListener("mousemove", handleMouseMove)
+
+    const points = Array.from({ length: 30 }, (_, i) => ({ 
+      id: i, 
+      x: Math.random() * 100, 
+      y: Math.random() * 100, 
+      size: Math.random() * 2 + 1, 
+      speed: Math.random() * 0.3 + 0.1, 
+    })); 
+    setConstellationPoints(points); 
+
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [])
 
@@ -80,7 +99,7 @@ export default function LandingPage() {
     },
     {
       id: 2,
-      title: "Econometría Aplicada con Stata",
+      title: "Ciclo 0",
       instructor: "Msc. Lucía Mendoza",
       image: "/placeholder.svg?height=200&width=300",
       rating: 4.8,
@@ -88,7 +107,7 @@ export default function LandingPage() {
     },
     {
       id: 3,
-      title: "Teoría de Juegos y Estrategia",
+      title: "Analisis Matemático",
       instructor: "Dra. Elena Ríos",
       image: "/placeholder.svg?height=200&width=300",
       rating: 4.9,
@@ -96,7 +115,7 @@ export default function LandingPage() {
     },
     {
       id: 4,
-      title: "Finanzas Corporativas y Valoración",
+      title: "Economía General",
       instructor: "Dr. Roberto Silva",
       image: "/placeholder.svg?height=200&width=300",
       rating: 4.7,
@@ -119,7 +138,7 @@ export default function LandingPage() {
     },
     {
       name: "Dra. Elena Ríos",
-      specialty: "Investigadora en Teoría de Juegos",
+      specialty: "Investigadora en matemáticas aplicadas",
       image: "/placeholder.svg?height=150&width=150",
       experience: "8+ años",
     },
@@ -160,16 +179,7 @@ export default function LandingPage() {
       popular: false,
       features: ["Todo lo de Pro", "Cursos personalizados", "Dashboard de equipo", "API access", "Soporte dedicado"],
     },
-  ]
-
-  // Constellation points for background animation
-  const constellationPoints = Array.from({ length: 30 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 2 + 1,
-    speed: Math.random() * 0.3 + 0.1,
-  }))
+  ] 
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
@@ -188,6 +198,7 @@ export default function LandingPage() {
         />
 
         {/* Constellation Points */}
+        {constellationPoints.length > 0 && (
         <svg className="absolute inset-0 w-full h-full">
           <defs>
             <filter id="glow">
@@ -249,6 +260,7 @@ export default function LandingPage() {
             )
           })}
         </svg>
+        )}
       </div>
 
       {/* Navigation */}
