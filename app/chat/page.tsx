@@ -30,7 +30,7 @@ export default function ChatPage() {
     {
       id: 1,
       name: "Dr. Alejandro Vargas",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "/prof1.jpg?height=40&width=40",
       lastMessage: "Perfecto, nos vemos en la sesión de mañana",
       time: "10:30 AM",
       unread: 2,
@@ -40,7 +40,7 @@ export default function ChatPage() {
     {
       id: 2,
       name: "Msc. Lucía Mendoza",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "/prof7.jpg?height=40&width=40",
       lastMessage: "Te envío el material adicional sobre valoración",
       time: "9:15 AM",
       unread: 0,
@@ -49,18 +49,18 @@ export default function ChatPage() {
     },
     {
       id: 3,
-      name: "Grupo: Econometría Aplicada",
-      avatar: "/placeholder.svg?height=40&width=40",
-      lastMessage: "María: ¿Alguien puede ayudarme con el ejercicio 3?",
+      name: "Ing. Laura Fernández",
+      avatar: "/prof8.jpg?height=40&width=40",
+      lastMessage: "¿Puede ayudarme con el ejercicio 3?",
       time: "Ayer",
       unread: 5,
       online: false,
-      type: "group",
+      type: "professional",
     },
     {
       id: 4,
       name: "Dra. Elena Ríos",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "/prof4.jpg?height=40&width=40",
       lastMessage: "Excelente trabajo en tu último ensayo",
       time: "Ayer",
       unread: 0,
@@ -70,7 +70,7 @@ export default function ChatPage() {
     {
       id: 5,
       name: "Soporte Técnico",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "/soportetecnico.png?height=40&width=40",
       lastMessage: "Tu problema ha sido resuelto",
       time: "2 días",
       unread: 0,
@@ -86,7 +86,7 @@ export default function ChatPage() {
       content: "Hola! Vi que tienes dudas sobre el análisis de regresión múltiple. ¿En qué puedo ayudarte?",
       time: "10:00 AM",
       isOwn: false,
-      avatar: "/placeholder.svg?height=32&width=32",
+      avatar: "/prof1.jpg?height=32&width=32",
     },
     {
       id: 2,
@@ -103,7 +103,7 @@ export default function ChatPage() {
         "Perfecto, es una duda muy común. Las variables categóricas se interpretan como el cambio en la variable dependiente respecto a la categoría de referencia.",
       time: "10:07 AM",
       isOwn: false,
-      avatar: "/placeholder.svg?height=32&width=32",
+      avatar: "/prof1.jpg?height=32&width=32",
     },
     {
       id: 4,
@@ -112,7 +112,7 @@ export default function ChatPage() {
         "Te voy a enviar un ejemplo práctico que te ayudará a entenderlo mejor. ¿Te parece si lo revisamos en una sesión mañana?",
       time: "10:08 AM",
       isOwn: false,
-      avatar: "/placeholder.svg?height=32&width=32",
+      avatar: "/prof1.jpg?height=32&width=32",
     },
     {
       id: 5,
@@ -127,7 +127,7 @@ export default function ChatPage() {
       content: "Perfecto, nos vemos en la sesión de mañana",
       time: "10:30 AM",
       isOwn: false,
-      avatar: "/placeholder.svg?height=32&width=32",
+      avatar: "/prof1.jpg?height=32&width=32",
     },
   ]
 
