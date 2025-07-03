@@ -15,38 +15,38 @@ export default function TeacherDashboard() {
     {
       id: 1,
       title: "Microeconomía Intermedia",
-      createdDate: "15 Mar 2024",
+      createdDate: "15 Mar 2025",
       status: "published",
       students: 1250,
       rating: 4.9,
-      revenue: "$3,200",
+      revenue: "S/.3,200",
     },
     {
       id: 2,
-      title: "Econometría Aplicada con Stata",
-      createdDate: "28 Feb 2024",
+      title: "Econometría I",
+      createdDate: "28 Feb 2025",
       status: "review",
       students: 0,
       rating: 0,
-      revenue: "$0",
+      revenue: "S/.0",
     },
     {
       id: 3,
-      title: "Historia del Pensamiento Económico",
-      createdDate: "10 Feb 2024",
+      title: "Ciclo 0 - Nivelación",
+      createdDate: "10 Feb 2025",
       status: "draft",
       students: 0,
       rating: 0,
-      revenue: "$0",
+      revenue: "S/.0",
     },
     {
       id: 4,
-      title: "Series de Tiempo para Pronósticos",
-      createdDate: "05 Jan 2024",
+      title: "Matemática para Economistas II",
+      createdDate: "05 Jan 2025",
       status: "published",
       students: 890,
       rating: 4.7,
-      revenue: "$2,100",
+      revenue: "S/.2,100",
     },
   ]
 
@@ -87,7 +87,7 @@ export default function TeacherDashboard() {
     },
     {
       title: "Ingresos del Mes",
-      value: "$5,300",
+      value: "S/.5,300",
       icon: TrendingUp,
       change: "+8%",
       changeType: "positive",
@@ -192,7 +192,7 @@ export default function TeacherDashboard() {
             </div>
             <Link href="/teacher/course/create">
               <Button className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-6 py-3 text-lg font-semibold hover:shadow-lg transition-all duration-200">
-                <Plus className="h-5 w-5 mr-2" />+ Crear Nuevo Curso
+                <Plus className="h-5 w-5 mr-2" />Crear Nuevo Curso
               </Button>
             </Link>
           </div>

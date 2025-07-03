@@ -26,22 +26,22 @@ export default function CourseReview() {
 
   const courseData = {
     id: 1,
-    title: "Estrategias de Redes Sociales",
+    title: "Microeconomía I",
     instructor: "Ana García",
-    instructorAvatar: "/placeholder.svg?height=40&width=40",
+    instructorAvatar: "/prof7.jpg?height=40&width=40",
     submissionDate: "28 Feb 2024",
-    category: "Marketing",
+    category: "Economia",
     duration: "4 semanas",
     description:
-      "Aprende las mejores estrategias para gestionar redes sociales y crear contenido que genere engagement y conversiones.",
-    videoUrl: "https://example.com/video",
+      "Curso introductorio a los principios de microeconomía, incluyendo oferta y demanda, elasticidad, teoría del consumidor y teoría de la empresa.",
+    videoUrl: "https://www.youtube.com/watch?v=MMFSdbc1-fI",
     totalLessons: 16,
   }
 
   const resources = [
     {
       id: 1,
-      name: "Guía de Redes Sociales 2024.pdf",
+      name: "Guía de técnicas de microeconomía.pdf",
       type: "pdf",
       size: "3.2 MB",
     },
@@ -185,7 +185,7 @@ export default function CourseReview() {
             <CardContent>
               <div className="relative bg-black aspect-video rounded-lg overflow-hidden">
                 <img
-                  src="/placeholder.svg?height=400&width=700"
+                  src="/vistaPrevia1.png?height=400&width=700"
                   alt="Video preview"
                   className="w-full h-full object-cover opacity-50"
                 />
