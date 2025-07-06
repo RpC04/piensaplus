@@ -21,6 +21,7 @@ import {
   MessageCircle,
 } from "lucide-react"
 import Link from "next/link"
+import Image from 'next/image'
 
 export default function ChatPage() {
   const [selectedChat, setSelectedChat] = useState(1)
@@ -148,7 +149,8 @@ export default function ChatPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <Link href="/">
+            <Link href="/" className="flex items-center gap-3">
+              <Image src="/logo.png" alt="Logo de Piensa+" width={60} height={60} />
               <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                 Piensa+
               </h1>
@@ -235,9 +237,8 @@ export default function ChatPage() {
                 <div
                   key={conversation.id}
                   onClick={() => setSelectedChat(conversation.id)}
-                  className={`p-4 border-b border-gray-700 cursor-pointer hover:bg-gray-700 transition-colors ${
-                    selectedChat === conversation.id ? "bg-gray-700 border-l-4 border-l-orange-500" : ""
-                  }`}
+                  className={`p-4 border-b border-gray-700 cursor-pointer hover:bg-gray-700 transition-colors ${selectedChat === conversation.id ? "bg-gray-700 border-l-4 border-l-orange-500" : ""
+                    }`}
                 >
                   <div className="flex items-center space-x-3">
                     <div className="relative">
@@ -265,13 +266,12 @@ export default function ChatPage() {
                       <div className="flex items-center mt-1">
                         <Badge
                           variant="secondary"
-                          className={`text-xs ${
-                            conversation.type === "professional"
+                          className={`text-xs ${conversation.type === "professional"
                               ? "bg-blue-500/20 text-blue-400"
                               : conversation.type === "group"
                                 ? "bg-green-500/20 text-green-400"
                                 : "bg-purple-500/20 text-purple-400"
-                          }`}
+                            }`}
                         >
                           {conversation.type === "professional"
                             ? "Profesional"
@@ -346,11 +346,10 @@ export default function ChatPage() {
                           </Avatar>
                         )}
                         <div
-                          className={`px-4 py-2 rounded-lg ${
-                            msg.isOwn
+                          className={`px-4 py-2 rounded-lg ${msg.isOwn
                               ? "bg-gradient-to-r from-orange-500 to-orange-600 text-white"
                               : "bg-gray-700 text-white"
-                          }`}
+                            }`}
                         >
                           <p className="text-sm">{msg.content}</p>
                           <p className={`text-xs mt-1 ${msg.isOwn ? "text-orange-100" : "text-gray-400"}`}>

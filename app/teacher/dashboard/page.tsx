@@ -5,8 +5,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Plus, Edit, Eye, Calendar, Users, BookOpen, TrendingUp, Bell, Settings, LogOut, User } from "lucide-react"
+import { ArrowLeft, Plus, Edit, Eye, Calendar, Users, BookOpen, TrendingUp, Bell, Settings, LogOut, User } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function TeacherDashboard() {
   const [activeTab, setActiveTab] = useState("mis-cursos")
@@ -108,8 +109,9 @@ export default function TeacherDashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <Link href="/">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
+            <Link href="/" className="flex items-center gap-3">
+              <Image src="/logo.png" alt="Logo de Piensa+" width={60} height={60} />
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                 Piensa+
               </h1>
             </Link>
@@ -118,11 +120,10 @@ export default function TeacherDashboard() {
             <div className="flex space-x-8">
               <button
                 onClick={() => setActiveTab("mis-cursos")}
-                className={`px-4 py-2 text-sm font-medium transition-colors ${
-                  activeTab === "mis-cursos"
-                    ? "text-orange-600 border-b-2 border-orange-600"
-                    : "text-gray-400 hover:text-gray-100"
-                }`}
+                className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === "mis-cursos"
+                  ? "text-orange-600 border-b-2 border-orange-600"
+                  : "text-gray-400 hover:text-gray-100"
+                  }`}
               >
                 Mis Cursos
               </button>
@@ -186,9 +187,16 @@ export default function TeacherDashboard() {
               alignItems: "center",
             }}
           >
-            <div>
-              <h1 className="text-4xl font-bold text-gray-100 mb-2">Gestión de Cursos</h1>
-              <p className="text-gray-400">Administra tus cursos y estudiantes</p>
+            <div className="flex items-center gap-4">
+              <Link href="/login">
+                <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white hover:bg-gray-800">
+                  <ArrowLeft className="h-5 w-5" />
+                </Button>
+              </Link>
+              <div>
+                <h1 className="text-4xl font-bold text-gray-100 mb-2">Gestión de Cursos</h1>
+                <p className="text-gray-400">Administra tus cursos y estudiantes</p>
+              </div>
             </div>
             <Link href="/teacher/course/create">
               <Button className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-6 py-3 text-lg font-semibold hover:shadow-lg transition-all duration-200">
@@ -213,9 +221,8 @@ export default function TeacherDashboard() {
                   </div>
                   <div className="mt-4 flex items-center">
                     <span
-                      className={`text-sm font-medium ${
-                        stat.changeType === "positive" ? "text-green-600" : "text-red-600"
-                      }`}
+                      className={`text-sm font-medium ${stat.changeType === "positive" ? "text-green-600" : "text-red-600"
+                        }`}
                     >
                       {stat.change}
                     </span>

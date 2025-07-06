@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ChevronRight, Play, Users, BookOpen, MessageCircle, Star, Check, Rocket, Brain, Zap } from "lucide-react"
 import Link from "next/link"
+import Image from 'next/image'
 
 type ConstellationPoint = {
   id: number;
@@ -260,11 +261,12 @@ export default function LandingPage() {
       <nav className="fixed top-0 w-full bg-black/90 backdrop-blur-md border-b border-gray-800 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
+            <Link href="/" className="flex items-center gap-3">
+              <Image src="/logo.png" alt="Logo de Piensa+" width={60} height={60} />
               <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                 Piensa+
               </h1>
-            </div>
+            </Link>
             <div className="flex items-center space-x-4">
               <Link href="/login">
                 <Button
@@ -590,6 +592,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             {/* Column 1: Logo and Tagline */}
             <div className="space-y-4">
+              <Image src="/logo.png" alt="Logo de Piensa+" width={60} height={60} />
               <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                 Piensa+
               </h2>

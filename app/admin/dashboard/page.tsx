@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { CheckCircle, Clock, Eye, Calendar, BookOpen, Users, TrendingUp, AlertCircle } from "lucide-react"
+import { ArrowLeft, CheckCircle, Clock, Eye, Calendar, BookOpen, Users, TrendingUp, AlertCircle } from "lucide-react"
 import Link from "next/link"
 
 export default function AdminDashboard() {
@@ -99,31 +99,28 @@ export default function AdminDashboard() {
             <div className="flex space-x-8">
               <button
                 onClick={() => setActiveTab("revisiones-pendientes")}
-                className={`px-4 py-2 text-sm font-medium transition-colors ${
-                  activeTab === "revisiones-pendientes"
+                className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === "revisiones-pendientes"
                     ? "text-orange-500 border-b-2 border-orange-500"
                     : "text-gray-400 hover:text-gray-100"
-                }`}
+                  }`}
               >
                 Revisiones Pendientes
               </button>
               <button
                 onClick={() => setActiveTab("usuarios")}
-                className={`px-4 py-2 text-sm font-medium transition-colors ${
-                  activeTab === "usuarios"
+                className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === "usuarios"
                     ? "text-orange-500 border-b-2 border-orange-500"
                     : "text-gray-400 hover:text-gray-100"
-                }`}
+                  }`}
               >
                 Usuarios
               </button>
               <button
                 onClick={() => setActiveTab("cursos-publicados")}
-                className={`px-4 py-2 text-sm font-medium transition-colors ${
-                  activeTab === "cursos-publicados"
+                className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === "cursos-publicados"
                     ? "text-orange-500 border-b-2 border-orange-500"
                     : "text-gray-400 hover:text-gray-100"
-                }`}
+                  }`}
               >
                 Cursos Publicados
               </button>
@@ -145,9 +142,16 @@ export default function AdminDashboard() {
       <main className="pt-20 pb-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-100 mb-2">Panel de Administración</h1>
-            <p className="text-gray-400">Gestiona cursos, usuarios y contenido de la plataforma</p>
+          <div className="flex items-center gap-4 mb-8">
+            <Link href="/login">
+              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white hover:bg-gray-800">
+                <ArrowLeft className="h-5 w-5" />
+              </Button>
+            </Link>
+            <div>
+              <h1 className="text-3xl font-bold text-gray-100 mb-2">Panel de Administración</h1>
+              <p className="text-gray-400">Gestiona cursos, usuarios y contenido de la plataforma</p>
+            </div>
           </div>
 
           {/* Stats Cards */}
