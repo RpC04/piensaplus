@@ -4,8 +4,9 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Bell, User, Settings, LogOut, Play, Clock, BookOpen } from "lucide-react"
+import { ArrowLeft, Bell, User, Settings, LogOut, Play, Clock, BookOpen } from "lucide-react"
 import Link from "next/link"
+import Image from 'next/image'
 
 export default function StudentDashboard() {
   const [activeTab, setActiveTab] = useState("mis-cursos")
@@ -13,19 +14,19 @@ export default function StudentDashboard() {
   const enrolledCourses = [
     {
       id: 1,
-      title: "Microeconomía Intermedia",
-      instructor: "Dr. Alejandro Vargas",
-      image: "/placeholder.svg?height=200&width=300",
+      title: "Microeconomía I",
+      instructor: "Dra. Ana Morales",
+      image: "/micro1.jpg?height=200&width=300",
       progress: 75,
       lastAccessed: "Hace 2 días",
-      totalLessons: 24,
-      completedLessons: 18,
+      totalLessons: 32,
+      completedLessons: 24,
     },
     {
       id: 2,
-      title: "Econometría Aplicada con Stata",
-      instructor: "Msc. Lucía Mendoza",
-      image: "/placeholder.svg?height=200&width=300",
+      title: "Econometría I",
+      instructor: "Dr. Alejandro Vargas",
+      image: "/econometria.png?height=200&width=300",
       progress: 45,
       lastAccessed: "Hace 1 semana",
       totalLessons: 32,
@@ -33,25 +34,25 @@ export default function StudentDashboard() {
     },
     {
       id: 3,
-      title: "Teoría de Juegos y Estrategia",
-      instructor: "Dra. Elena Ríos",
-      image: "/placeholder.svg?height=200&width=300",
+      title: "Matemática para Economistas I",
+      instructor: "Msc. Javier Torres",
+      image: "/analisiMat.jpg?height=200&width=300",
       progress: 90,
       lastAccessed: "Ayer",
-      totalLessons: 20,
-      completedLessons: 18,
+      totalLessons: 32,
+      completedLessons: 29,
     },
     {
       id: 4,
-      title: "Macroeconomía Dinámica",
-      instructor: "Dr. Roberto Silva",
-      image: "/placeholder.svg?height=200&width=300",
+      title: "Macroeconomía I",
+      instructor: "Dr. Carlos Herrera",
+      image: "/economiaGeneral.jpg?height=200&width=300",
       progress: 30,
       lastAccessed: "Hace 3 días",
-      totalLessons: 28,
-      completedLessons: 8,
+      totalLessons: 32,
+      completedLessons: 10,
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-gray-900">
@@ -60,7 +61,8 @@ export default function StudentDashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <Link href="/">
+            <Link href="/" className="flex items-center gap-3">
+              <Image src="/logo.png" alt="Logo de Piensa+" width={60} height={60} />
               <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                 Piensa+
               </h1>
@@ -70,11 +72,10 @@ export default function StudentDashboard() {
             <div className="flex space-x-8">
               <button
                 onClick={() => setActiveTab("mis-cursos")}
-                className={`px-4 py-2 text-sm font-medium transition-colors ${
-                  activeTab === "mis-cursos"
-                    ? "text-orange-500 border-b-2 border-orange-500"
-                    : "text-gray-400 hover:text-gray-100"
-                }`}
+                className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === "mis-cursos"
+                  ? "text-orange-500 border-b-2 border-orange-500"
+                  : "text-gray-400 hover:text-gray-100"
+                  }`}
               >
                 Mis Cursos
               </button>
@@ -98,7 +99,7 @@ export default function StudentDashboard() {
 
             {/* Right Side */}
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="icon" className="relative">
+              <Button variant="ghost" size="icon" className="relative text-white hover:text-black">
                 <Bell className="h-5 w-5" />
                 <span className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full"></span>
               </Button>
@@ -136,9 +137,16 @@ export default function StudentDashboard() {
       <main className="pt-20 pb-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Title Section */}
-          <div className="mb-8">
-            <h1 className="text-4xl font-bold text-white mb-2">Mis Cursos Activos</h1>
-            <p className="text-gray-400">Continúa tu aprendizaje donde lo dejaste</p>
+          <div className="flex items-center gap-4 mb-8">
+            <Link href="/login">
+              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white hover:bg-gray-800">
+                <ArrowLeft className="h-5 w-5" />
+              </Button>
+            </Link>
+            <div>
+              <h1 className="text-4xl font-bold text-white mb-2">Mis Cursos</h1>
+              <p className="text-gray-400">Continúa tu aprendizaje donde lo dejaste</p>
+            </div>
           </div>
 
           {/* Course Grid */}

@@ -6,6 +6,15 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ChevronRight, Play, Users, BookOpen, MessageCircle, Star, Check, Rocket, Brain, Zap } from "lucide-react"
 import Link from "next/link"
+import Image from 'next/image'
+
+type ConstellationPoint = {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  speed: number;
+};
 
 export default function LandingPage() {
   const [hoveredCourse, setHoveredCourse] = useState<number | null>(null)
@@ -13,6 +22,7 @@ export default function LandingPage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [animatedStats, setAnimatedStats] = useState({ professionals: 0, students: 0, courses: 0 })
   const [hasAnimated, setHasAnimated] = useState(false)
+  const [constellationPoints, setConstellationPoints] = useState<ConstellationPoint[]>([]);
   const statsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -23,6 +33,16 @@ export default function LandingPage() {
     }
 
     window.addEventListener("mousemove", handleMouseMove)
+
+    const points = Array.from({ length: 30 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 2 + 1,
+      speed: Math.random() * 0.3 + 0.1,
+    }));
+    setConstellationPoints(points);
+
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [])
 
@@ -74,31 +94,31 @@ export default function LandingPage() {
       id: 1,
       title: "Microeconomía Intermedia",
       instructor: "Dr. Alejandro Vargas",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/micro1.jpg?height=200&width=300",
       rating: 4.9,
       students: 1250,
     },
     {
       id: 2,
-      title: "Econometría Aplicada con Stata",
+      title: "Ciclo 0",
       instructor: "Msc. Lucía Mendoza",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/nivelacion0.png?height=200&width=300",
       rating: 4.8,
       students: 980,
     },
     {
       id: 3,
-      title: "Teoría de Juegos y Estrategia",
+      title: "Analisis Matemático",
       instructor: "Dra. Elena Ríos",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/analisiMat.jpg?height=200&width=300",
       rating: 4.9,
       students: 750,
     },
     {
       id: 4,
-      title: "Finanzas Corporativas y Valoración",
+      title: "Economía General",
       instructor: "Dr. Roberto Silva",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/economiaGeneral.jpg?height=200&width=300",
       rating: 4.7,
       students: 650,
     },
@@ -108,25 +128,25 @@ export default function LandingPage() {
     {
       name: "Dr. Alejandro Vargas",
       specialty: "Experto en Econometría",
-      image: "/placeholder.svg?height=150&width=150",
+      image: "/prof1.jpg?height=150&width=150",
       experience: "10+ años",
     },
     {
       name: "Msc. Lucía Mendoza",
       specialty: "Especialista en Finanzas",
-      image: "/placeholder.svg?height=150&width=150",
+      image: "/prof4.jpg?height=150&width=150",
       experience: "15+ años",
     },
     {
       name: "Dra. Elena Ríos",
-      specialty: "Investigadora en Teoría de Juegos",
-      image: "/placeholder.svg?height=150&width=150",
+      specialty: "Investigadora en matemáticas aplicadas",
+      image: "/prof5.jpg?height=150&width=150",
       experience: "8+ años",
     },
     {
       name: "Dr. Roberto Silva",
       specialty: "Director Financiero y Consultor",
-      image: "/placeholder.svg?height=150&width=150",
+      image: "/prof2.jpg?height=150&width=150",
       experience: "12+ años",
     },
   ]
@@ -134,42 +154,26 @@ export default function LandingPage() {
   const pricingPlans = [
     {
       name: "Básico",
-      price: "$29",
+      price: "S/.80",
       period: "/mes",
       popular: false,
-      features: ["Acceso a 50+ cursos", "Certificados de finalización", "Soporte por email", "Acceso móvil"],
+      features: ["4 sesiones grupales", "Acceso a materiales digitales", "Soporte via+", "Constancia del curso", "Acceso a ChatGPT Premium", "Asesoria por Whatsapp"],
     },
     {
-      name: "Pro",
-      price: "$59",
+      name: "Premium",
+      price: "S/.120",
       period: "/mes",
       popular: true,
       features: [
-        "Acceso ilimitado a cursos",
-        "Mentorías 1:1 con profesionales",
+        "Todo lo del plan Básico",
+        "Canva Pro",
+        "Clases grabadas",
         "Certificados verificados",
-        "Soporte prioritario",
-        "Proyectos prácticos",
-        "Networking exclusivo",
+        "Simulacros Exámenes",
+        "Asesoramiento personalizado",
       ],
-    },
-    {
-      name: "Enterprise",
-      price: "$99",
-      period: "/mes",
-      popular: false,
-      features: ["Todo lo de Pro", "Cursos personalizados", "Dashboard de equipo", "API access", "Soporte dedicado"],
-    },
+    }
   ]
-
-  // Constellation points for background animation
-  const constellationPoints = Array.from({ length: 30 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 2 + 1,
-    speed: Math.random() * 0.3 + 0.1,
-  }))
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
@@ -188,78 +192,81 @@ export default function LandingPage() {
         />
 
         {/* Constellation Points */}
-        <svg className="absolute inset-0 w-full h-full">
-          <defs>
-            <filter id="glow">
-              <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-              <feMerge>
-                <feMergeNode in="coloredBlur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
+        {constellationPoints.length > 0 && (
+          <svg className="absolute inset-0 w-full h-full">
+            <defs>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
 
-          {constellationPoints.map((point) => (
-            <circle
-              key={point.id}
-              cx={`${point.x}%`}
-              cy={`${point.y}%`}
-              r={point.size}
-              fill="#FF6B00"
-              opacity="0.6"
-              filter="url(#glow)"
-            >
-              <animate
-                attributeName="opacity"
-                values="0.3;0.8;0.3"
-                dur={`${3 + point.speed * 4}s`}
-                repeatCount="indefinite"
-              />
-              <animateTransform
-                attributeName="transform"
-                type="translate"
-                values={`0,0; ${Math.sin(point.id) * 10},${Math.cos(point.id) * 10}; 0,0`}
-                dur={`${8 + point.speed * 5}s`}
-                repeatCount="indefinite"
-              />
-            </circle>
-          ))}
-
-          {/* Connection Lines */}
-          {constellationPoints.slice(0, 15).map((point, index) => {
-            const nextPoint = constellationPoints[(index + 1) % 15]
-            return (
-              <line
-                key={`line-${index}`}
-                x1={`${point.x}%`}
-                y1={`${point.y}%`}
-                x2={`${nextPoint.x}%`}
-                y2={`${nextPoint.y}%`}
-                stroke="#FF6B00"
-                strokeWidth="0.5"
-                opacity="0.2"
+            {constellationPoints.map((point) => (
+              <circle
+                key={point.id}
+                cx={`${point.x}%`}
+                cy={`${point.y}%`}
+                r={point.size}
+                fill="#FF6B00"
+                opacity="0.6"
+                filter="url(#glow)"
               >
                 <animate
                   attributeName="opacity"
-                  values="0.1;0.4;0.1"
-                  dur={`${4 + Math.random() * 3}s`}
+                  values="0.3;0.8;0.3"
+                  dur={`${3 + point.speed * 4}s`}
                   repeatCount="indefinite"
                 />
-              </line>
-            )
-          })}
-        </svg>
+                <animateTransform
+                  attributeName="transform"
+                  type="translate"
+                  values={`0,0; ${Math.sin(point.id) * 10},${Math.cos(point.id) * 10}; 0,0`}
+                  dur={`${8 + point.speed * 5}s`}
+                  repeatCount="indefinite"
+                />
+              </circle>
+            ))}
+
+            {/* Connection Lines */}
+            {constellationPoints.slice(0, 15).map((point, index) => {
+              const nextPoint = constellationPoints[(index + 1) % 15]
+              return (
+                <line
+                  key={`line-${index}`}
+                  x1={`${point.x}%`}
+                  y1={`${point.y}%`}
+                  x2={`${nextPoint.x}%`}
+                  y2={`${nextPoint.y}%`}
+                  stroke="#FF6B00"
+                  strokeWidth="0.5"
+                  opacity="0.2"
+                >
+                  <animate
+                    attributeName="opacity"
+                    values="0.1;0.4;0.1"
+                    dur={`${4 + Math.random() * 3}s`}
+                    repeatCount="indefinite"
+                  />
+                </line>
+              )
+            })}
+          </svg>
+        )}
       </div>
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-black/90 backdrop-blur-md border-b border-gray-800 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
+            <Link href="/" className="flex items-center gap-3">
+              <Image src="/logo.png" alt="Logo de Piensa+" width={60} height={60} />
               <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                 Piensa+
               </h1>
-            </div>
+            </Link>
             <div className="flex items-center space-x-4">
               <Link href="/login">
                 <Button
@@ -526,54 +533,55 @@ export default function LandingPage() {
             <p className="text-xl text-gray-300">Encuentra el plan perfecto para tu crecimiento profesional</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pricingPlans.map((plan, index) => (
-              <Card
-                key={index}
-                className={`relative transition-all duration-500 hover:scale-110 animate-fade-in-up ${
-                  plan.popular
-                    ? "bg-gray-800/90 border-orange-500 border-2 shadow-2xl shadow-orange-500/30 backdrop-blur-sm"
-                    : "bg-gray-800/80 border-gray-700 hover:border-orange-500 backdrop-blur-sm"
-                }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <Badge className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2 text-sm font-semibold animate-pulse">
-                      Más Popular
-                    </Badge>
-                  </div>
-                )}
-                <CardContent className="p-8">
-                  <div className="text-center mb-8">
-                    <h3 className="text-3xl font-bold text-white mb-2">{plan.name}</h3>
-                    <div className="flex items-baseline justify-center">
-                      <span className="text-5xl font-bold text-white">{plan.price}</span>
-                      <span className="text-gray-400 ml-2 text-lg">{plan.period}</span>
-                    </div>
-                  </div>
-
-                  <ul className="space-y-4 mb-8">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center">
-                        <Check className="h-5 w-5 text-orange-500 mr-3 flex-shrink-0" />
-                        <span className="text-gray-300">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Button
-                    className={`w-full py-4 text-lg font-semibold transition-all duration-300 ${
-                      plan.popular
-                        ? "bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-orange-500/50 hover:scale-105 hover:brightness-110"
-                        : "bg-gray-700 hover:bg-gray-600 text-white border border-gray-600 hover:border-orange-500 hover:brightness-110"
+          {/*DIV envolvente para limitar el ancho y centrar */}
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {pricingPlans.map((plan, index) => (
+                <Card
+                  key={index}
+                  className={`relative transition-all duration-500 hover:scale-110 animate-fade-in-up ${plan.popular
+                      ? "bg-gray-800/90 border-orange-500 border-2 shadow-2xl shadow-orange-500/30 backdrop-blur-sm"
+                      : "bg-gray-800/80 border-gray-700 hover:border-orange-500 backdrop-blur-sm"
                     }`}
-                  >
-                    Comenzar Ahora
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {plan.popular && (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <Badge className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2 text-sm font-semibold animate-pulse">
+                        Más Popular
+                      </Badge>
+                    </div>
+                  )}
+                  <CardContent className="p-8">
+                    <div className="text-center mb-8">
+                      <h3 className="text-3xl font-bold text-white mb-2">{plan.name}</h3>
+                      <div className="flex items-baseline justify-center">
+                        <span className="text-5xl font-bold text-white">{plan.price}</span>
+                        <span className="text-gray-400 ml-2 text-lg">{plan.period}</span>
+                      </div>
+                    </div>
+
+                    <ul className="space-y-4 mb-8">
+                      {plan.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center">
+                          <Check className="h-5 w-5 text-orange-500 mr-3 flex-shrink-0" />
+                          <span className="text-gray-300">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Button
+                      className={`w-full py-4 text-lg font-semibold transition-all duration-300 ${plan.popular
+                          ? "bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-orange-500/50 hover:scale-105 hover:brightness-110"
+                          : "bg-gray-700 hover:bg-gray-600 text-white border border-gray-600 hover:border-orange-500 hover:brightness-110"
+                        }`}
+                    >
+                      Comenzar Ahora
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -584,6 +592,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             {/* Column 1: Logo and Tagline */}
             <div className="space-y-4">
+              <Image src="/logo.png" alt="Logo de Piensa+" width={60} height={60} />
               <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                 Piensa+
               </h2>
@@ -668,7 +677,7 @@ export default function LandingPage() {
 
           {/* Bottom Bar */}
           <div className="border-t border-gray-800 pt-8">
-            <p className="text-center text-gray-400">© 2024 Piensa+. Todos los derechos reservados.</p>
+            <p className="text-center text-gray-400">© 2025 Piensa+. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>

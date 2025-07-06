@@ -1,8 +1,9 @@
 "use client"
 
 import { useState } from "react"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { GraduationCap, Briefcase, Settings } from "lucide-react"
+import { ArrowLeft, GraduationCap, Briefcase, Settings } from "lucide-react"
 import Link from "next/link"
 
 export default function LoginPage() {
@@ -39,6 +40,11 @@ export default function LoginPage() {
     <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4">
       <div className="max-w-4xl w-full">
         {/* Header */}
+        <Link href="/">
+          <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white hover:bg-gray-800">
+            <ArrowLeft className="h-5 w-5" />
+          </Button>
+        </Link>
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
             Bienvenido a{" "}
@@ -54,9 +60,8 @@ export default function LoginPage() {
           {roles.map((role) => (
             <Link key={role.id} href={role.href}>
               <Card
-                className={`group cursor-pointer transition-all duration-300 bg-gray-800 border-gray-700 hover:border-orange-500 hover:shadow-2xl hover:shadow-orange-500/20 ${
-                  hoveredCard === role.id ? "scale-105" : ""
-                }`}
+                className={`group cursor-pointer transition-all duration-300 bg-gray-800 border-gray-700 hover:border-orange-500 hover:shadow-2xl hover:shadow-orange-500/20 ${hoveredCard === role.id ? "scale-105" : ""
+                  }`}
                 onMouseEnter={() => setHoveredCard(role.id)}
                 onMouseLeave={() => setHoveredCard(null)}
               >

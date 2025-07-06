@@ -8,112 +8,117 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Bell, User, Settings, LogOut, Star, MessageCircle, Briefcase, GraduationCap } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function ProfessionalsPage() {
   const [activeTab, setActiveTab] = useState("profesionales")
 
-  const professionals = [
+    const professionals = [
     {
       id: 1,
       name: "Dr. Alejandro Vargas",
       specialty: "Experto en Econometría",
       description:
-        "Especialista en econometría aplicada con más de 10 años de experiencia en análisis de datos económicos y modelado estadístico.",
-      image: "/placeholder.svg?height=150&width=150",
-      experience: "10+ años",
+        "Doctor en Economía con especialización en modelos econométricos. Guía a los estudiantes a través de los cursos de Econometría I y II, desde los fundamentos de la regresión hasta técnicas avanzadas.",
+      image: "/prof1.jpg?height=150&width=150",
+      experience: "12+ años",
       rating: 4.9,
-      students: 2500,
-      courses: 5,
-      expertise: ["Econometría", "Stata", "Análisis de Datos"],
+      students: 1740,
+      courses: 2,
+      expertise: ["Econometría", "Regresión Lineal", "Series de Tiempo", "Stata"],
     },
     {
       id: 2,
-      name: "Msc. Lucía Mendoza",
-      specialty: "Especialista en Finanzas",
+      name: "Dra. Ana Morales",
+      specialty: "Especialista en Microeconomía",
       description:
-        "Magíster en Finanzas con experiencia en mercados financieros, valoración de empresas y gestión de riesgos financieros.",
-      image: "/placeholder.svg?height=150&width=150",
-      experience: "15+ años",
-      rating: 4.9,
-      students: 1800,
-      courses: 3,
-      expertise: ["Finanzas Corporativas", "Valoración", "Mercados Financieros"],
+        "Investigadora y docente apasionada por la teoría microeconómica. Imparte Microeconomía I y II, cubriendo desde la teoría del consumidor hasta las complejidades de la teoría de juegos.",
+      image: "/prof4.jpg?height=150&width=150",
+      experience: "9+ años",
+      rating: 4.8,
+      students: 1870,
+      courses: 2,
+      expertise: ["Teoría del Consumidor", "Estructuras de Mercado", "Teoría de Juegos"],
     },
     {
       id: 3,
-      name: "Dra. Elena Ríos",
-      specialty: "Investigadora en Teoría de Juegos",
+      name: "Dr. Carlos Herrera",
+      specialty: "Especialista en Macroeconomía",
       description:
-        "Doctora en Economía especializada en teoría de juegos, estrategia empresarial y economía experimental.",
-      image: "/placeholder.svg?height=150&width=150",
-      experience: "8+ años",
+        "Experto en política monetaria y modelos macroeconómicos. Enseña Macroeconomía I y II, explorando el modelo IS-LM, economías abiertas y los fundamentos de los modelos dinámicos.",
+      image: "/prof2.jpg?height=150&width=150",
+      experience: "15+ años",
       rating: 4.8,
-      students: 3200,
-      courses: 7,
-      expertise: ["Teoría de Juegos", "Estrategia", "Economía Experimental"],
+      students: 1730,
+      courses: 2,
+      expertise: ["Modelos IS-LM", "Política Monetaria", "Economía Abierta", "Modelos DSGE"],
     },
     {
       id: 4,
-      name: "Dr. Roberto Silva",
-      specialty: "Director Financiero y Consultor",
+      name: "Msc. Javier Torres",
+      specialty: "Experto en Métodos Cuantitativos",
       description:
-        "CFO con experiencia en finanzas corporativas, análisis de inversiones y gestión de riesgos financieros.",
-      image: "/placeholder.svg?height=150&width=150",
-      experience: "12+ años",
+        "Magíster en Economía Cuantitativa. Su especialidad es hacer que las matemáticas sean accesibles, enseñando Análisis Matemático y Matemática para Economistas I y II.",
+      image: "/prof3.jpg?height=150&width=150",
+      experience: "8+ años",
       rating: 4.7,
-      students: 1500,
-      courses: 4,
-      expertise: ["Finanzas Corporativas", "Análisis de Inversiones", "Gestión de Riesgos"],
+      students: 1610,
+      courses: 3,
+      expertise: ["Cálculo Multivariado", "Álgebra Lineal", "Optimización Dinámica"],
     },
     {
       id: 5,
-      name: "Dr. Carlos Herrera",
-      specialty: "Especialista en Macroeconomía",
-      description: "Doctor en Economía con especialización en macroeconomía dinámica y política económica.",
-      image: "/placeholder.svg?height=150&width=150",
-      experience: "9+ años",
-      rating: 4.8,
-      students: 2100,
-      courses: 6,
-      expertise: ["Macroeconomía", "Política Económica", "Modelos DSGE"],
+      name: "Msc. Patricia Vega",
+      specialty: "Especialista en Estadística Aplicada",
+      description:
+        "Apasionada por los datos, Patricia enseña Estadística Descriptiva y Aplicada, enfocándose en la inferencia, pruebas de hipótesis y la aplicación práctica en la investigación económica.",
+      image: "/prof5.jpg?height=150&width=150",
+      experience: "10+ años",
+      rating: 4.9,
+      students: 2450,
+      courses: 2,
+      expertise: ["Inferencia Estadística", "Pruebas de Hipótesis", "Análisis de Datos"],
     },
     {
       id: 6,
-      name: "Dra. Ana Morales",
-      specialty: "Investigadora en Economía Conductual",
-      description: "Doctora especializada en economía del comportamiento y psicología económica aplicada.",
-      image: "/placeholder.svg?height=150&width=150",
-      experience: "11+ años",
-      rating: 4.6,
-      students: 1900,
-      courses: 5,
-      expertise: ["Economía Conductual", "Psicología Económica", "Experimentos"],
+      name: "Dr. Roberto Silva",
+      specialty: "Profesor de Fundamentos Económicos",
+      description:
+        "Con una vasta experiencia en docencia, el Dr. Silva introduce a los nuevos estudiantes al fascinante mundo de la economía a través del curso de Economía General.",
+      image: "/prof6.jpg?height=150&width=150",
+      experience: "20+ años",
+      rating: 4.9,
+      students: 1850,
+      courses: 1,
+      expertise: ["Principios de Economía", "Historia Económica", "Microeconomía Básica"],
     },
     {
       id: 7,
-      name: "Dr. Miguel Fernández",
-      specialty: "Historiador del Pensamiento Económico",
-      description: "Especialista en historia del pensamiento económico y evolución de las teorías económicas.",
-      image: "/placeholder.svg?height=150&width=150",
+      name: "Lic. Sofia Reyes",
+      specialty: "Coordinadora de Nivelación Académica",
+      description:
+        "Especialista en técnicas de estudio y refuerzo de conocimientos. Lidera el 'Ciclo 0' para asegurar que todos los estudiantes tengan una base sólida para empezar su carrera.",
+      image: "/prof7.jpg?height=150&width=150",
       experience: "7+ años",
-      rating: 4.9,
-      students: 1200,
-      courses: 3,
-      expertise: ["Historia Económica", "Pensamiento Económico", "Teorías Clásicas"],
+      rating: 4.8,
+      students: 1500,
+      courses: 1,
+      expertise: ["Nivelación Académica", "Matemática Básica", "Técnicas de Estudio"],
     },
     {
       id: 8,
-      name: "Msc. Patricia Vega",
-      specialty: "Especialista en Series de Tiempo",
-      description: "Magíster en Economía con especialización en análisis de series de tiempo y pronósticos económicos.",
-      image: "/placeholder.svg?height=150&width=150",
+      name: "Ing. Laura Fernández",
+      specialty: "Profesional de Proyectos Económicos",
+      description:
+        "Ingeniera con experiencia en proyectos económicos y sociales. Imparte cursos prácticos sobre la aplicación de la economía en proyectos reales.",
+      image: "/prof8.jpg?height=150&width=150",
       experience: "6+ años",
-      rating: 4.8,
-      students: 2800,
-      courses: 4,
-      expertise: ["Series de Tiempo", "Pronósticos", "Análisis Cuantitativo"],
-    },
-  ]
+      rating: 4.6,
+      students: 1200,
+      courses: 1,
+      expertise: ["Proyectos Económicos", "Análisis de Costos", "Evaluación de Impacto"],
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-gray-900">
@@ -122,7 +127,8 @@ export default function ProfessionalsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <Link href="/">
+            <Link href="/" className="flex items-center gap-3">
+              <Image src="/logo.png" alt="Logo de Piensa+" width={60} height={60} />
               <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                 Piensa+
               </h1>
