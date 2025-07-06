@@ -27,6 +27,7 @@ import {
   CheckCircle,
 } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 interface Resource {
   id: number
@@ -119,7 +120,8 @@ export default function CreateCoursePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <Link href="/">
+            <Link href="/" className="flex items-center gap-3">
+              <Image src="/logo.png" alt="Logo de Piensa+" width={60} height={60} />
               <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                 Piensa+
               </h1>
@@ -129,11 +131,10 @@ export default function CreateCoursePage() {
             <div className="flex space-x-8">
               <Link href="/teacher/dashboard">
                 <button
-                  className={`px-4 py-2 text-sm font-medium transition-colors ${
-                    activeTab === "mis-cursos"
+                  className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === "mis-cursos"
                       ? "text-orange-500 border-b-2 border-orange-500"
                       : "text-gray-400 hover:text-gray-100"
-                  }`}
+                    }`}
                 >
                   Mis Cursos
                 </button>

@@ -22,6 +22,7 @@ import {
   Play,
 } from "lucide-react"
 import Link from "next/link"
+import Image from 'next/image'
 
 export default function CoursesPage() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -31,7 +32,7 @@ export default function CoursesPage() {
   const categories = ["Todos", "Econometría", "Microeconomía", "Macroeconomía", "Finanzas", "Historia Económica"]
   const levels = ["Todos", "Principiante", "Intermedio", "Avanzado"]
 
-    const courses = [
+  const courses = [
     {
       id: 1,
       title: "Ciclo 0: Nivelación Académica",
@@ -43,7 +44,6 @@ export default function CoursesPage() {
       students: 1500,
       duration: "4 semanas",
       level: "Introductorio",
-      price: "$99",
       category: "Nivelación",
       lessons: 20,
       featured: true,
@@ -59,7 +59,6 @@ export default function CoursesPage() {
       students: 1120,
       duration: "16 semanas",
       level: "Principiante",
-      price: "$159",
       category: "Matemáticas",
       lessons: 32,
       featured: false,
@@ -75,7 +74,6 @@ export default function CoursesPage() {
       students: 1850,
       duration: "16 semanas",
       level: "Principiante",
-      price: "$149",
       category: "Introducción",
       lessons: 30,
       featured: true,
@@ -91,7 +89,6 @@ export default function CoursesPage() {
       students: 950,
       duration: "16 semanas",
       level: "Intermedio",
-      price: "$179",
       category: "Macroeconomía",
       lessons: 32,
       featured: false,
@@ -107,7 +104,6 @@ export default function CoursesPage() {
       students: 780,
       duration: "16 semanas",
       level: "Avanzado",
-      price: "$199",
       category: "Macroeconomía",
       lessons: 32,
       featured: false,
@@ -123,7 +119,6 @@ export default function CoursesPage() {
       students: 1050,
       duration: "16 semanas",
       level: "Intermedio",
-      price: "$179",
       category: "Microeconomía",
       lessons: 32,
       featured: false,
@@ -139,7 +134,6 @@ export default function CoursesPage() {
       students: 820,
       duration: "16 semanas",
       level: "Avanzado",
-      price: "$199",
       category: "Microeconomía",
       lessons: 32,
       featured: true,
@@ -155,7 +149,6 @@ export default function CoursesPage() {
       students: 900,
       duration: "16 semanas",
       level: "Intermedio",
-      price: "$189",
       category: "Matemáticas",
       lessons: 32,
       featured: false,
@@ -171,7 +164,6 @@ export default function CoursesPage() {
       students: 710,
       duration: "16 semanas",
       level: "Avanzado",
-      price: "$209",
       category: "Matemáticas",
       lessons: 32,
       featured: false,
@@ -187,7 +179,6 @@ export default function CoursesPage() {
       students: 1300,
       duration: "8 semanas",
       level: "Principiante",
-      price: "$129",
       category: "Estadística",
       lessons: 16,
       featured: false,
@@ -203,7 +194,6 @@ export default function CoursesPage() {
       students: 1150,
       duration: "16 semanas",
       level: "Intermedio",
-      price: "$189",
       category: "Estadística",
       lessons: 32,
       featured: false,
@@ -219,7 +209,6 @@ export default function CoursesPage() {
       students: 980,
       duration: "16 semanas",
       level: "Avanzado",
-      price: "$219",
       category: "Econometría",
       lessons: 32,
       featured: false,
@@ -235,7 +224,6 @@ export default function CoursesPage() {
       students: 760,
       duration: "16 semanas",
       level: "Experto",
-      price: "$249",
       category: "Econometría",
       lessons: 32,
       featured: false,
@@ -261,7 +249,8 @@ export default function CoursesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <Link href="/">
+            <Link href="/" className="flex items-center gap-3">
+              <Image src="/logo.png" alt="Logo de Piensa+" width={60} height={60} />
               <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                 Piensa+
               </h1>
@@ -292,7 +281,7 @@ export default function CoursesPage() {
 
             {/* Right Side */}
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="icon" className="relative text-gray-400 hover:text-white">
+              <Button variant="ghost" size="icon" className="relative text-white hover:text-black">
                 <Bell className="h-5 w-5" />
                 <span className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full"></span>
               </Button>
@@ -472,8 +461,7 @@ export default function CoursesPage() {
                             </div>
                           </div>
 
-                          <div className="flex items-center justify-between">
-                            <span className="text-2xl font-bold text-orange-500">{course.price}</span>
+                          <div className="flex items-center justify-end">
                             <Button
                               size="sm"
                               className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
@@ -559,8 +547,7 @@ export default function CoursesPage() {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-between">
-                          <span className="text-lg font-bold text-orange-500">{course.price}</span>
+                        <div className="flex items-center justify-end">
                           <Button
                             size="sm"
                             className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xs"
