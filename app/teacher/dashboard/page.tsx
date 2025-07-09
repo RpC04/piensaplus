@@ -127,7 +127,7 @@ export default function TeacherDashboard() {
               >
                 Mis Cursos
               </button>
-              <Link href="/chat">
+              <Link href="/teacher/chat">
                 <button className="px-4 py-2 text-sm font-medium text-gray-400 hover:text-gray-100 transition-colors relative">
                   Mensajes
                   <span className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full"></span>
